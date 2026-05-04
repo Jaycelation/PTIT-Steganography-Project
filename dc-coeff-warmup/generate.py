@@ -15,7 +15,7 @@ def main() -> None:
     parser.add_argument("--flag", required=True)
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--output", default="output")
-    parser.add_argument("--step", type=float, default=96.0)
+    parser.add_argument("--step", type=float, default=128.0)
     args = parser.parse_args()
 
     out_dir = Path(args.output)

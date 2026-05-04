@@ -3,10 +3,11 @@
   "seed": 1337,
   "flag_length_bytes": 19,
   "bit_length": 152,
-  "step": 96.0,
+  "step": 128.0,
+  "source": "synthetic",
   "mode": "frame-DCT simulation, not codec-level MPEG",
   "metrics_pre_encode": {
-    "mse": 1.045862268527142,
-    "psnr": 47.93605865588197
+    "mse": 2.0423900534709296,
+    "psnr": 45.02941674099727
   }
 }

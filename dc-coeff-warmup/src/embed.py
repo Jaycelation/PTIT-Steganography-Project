@@ -33,11 +33,10 @@ def dc_positions(frames: list[np.ndarray], seed: int, count: int) -> list[tuple[
     return coords[:count]
 
 
-def embed_bits_dc(frames: list[np.ndarray], bits: list[int], seed: int, step: float = 96.0) -> list[np.ndarray]:
+def embed_bits_dc(frames: list[np.ndarray], bits: list[int], seed: int, step: float = 128.0) -> list[np.ndarray]:
     stego = [f.copy() for f in frames]
     for bit, (fi, y, x) in zip(bits, dc_positions(frames, seed, len(bits))):
         coefs = block_dct(stego[fi][y : y + 8, x : x + 8])
         coefs[0, 0] = embed_parity(float(coefs[0, 0]), bit, step)
         stego[fi][y : y + 8, x : x + 8] = block_idct(coefs)
     return stego
-

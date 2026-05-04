@@ -15,21 +15,22 @@ def main() -> None:
     p.add_argument("--flag", required=True)
     p.add_argument("--seed", type=int, required=True)
     p.add_argument("--output", default="output")
-    p.add_argument("--step", type=float, default=224.0)
+    p.add_argument("--step", type=float, help="QIM step. Defaults to 224 for real input video, 160 for synthetic.")
     args = p.parse_args()
 
     out_dir = Path(args.output)
     (out_dir / "private").mkdir(parents=True, exist_ok=True)
+    step = args.step if args.step is not None else (224.0 if args.input else 160.0)
     frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
-    stego, used_indices = embed_size_aware(frames, bits, args.seed, args.step)
+    stego, used_indices = embed_size_aware(frames, bits, args.seed, step)
     write_y_video(out_dir / "stego.mp4", stego, fps, chroma)
 
     public = {
         "challenge": "vlc-size-aware-embedding",
         "seed": args.seed,
         "flag_length_bytes": len(args.flag.encode("utf-8")),
-        "q_step": args.step,
+        "q_step": step,
         "used_coefficients": len(used_indices),
         "used_position_indices": used_indices,
         "vlc_rule": "estimated_vlc_size(new_coef) <= estimated_vlc_size(old_coef)",

@@ -20,7 +20,7 @@ def main() -> None:
     cfg_path = Path(args.input).parent / "public_config.json"
     cfg = json.loads(cfg_path.read_text(encoding="utf-8")) if cfg_path.exists() else {}
     length = args.length or int(cfg["flag_length_bytes"])
-    step = args.step or float(cfg.get("q_step", 224.0))
+    step = args.step or float(cfg.get("q_step", 160.0))
     frames, _ = read_gray_video(args.input)
     answer = extract_message(frames, args.seed, length, step, cfg.get("used_position_indices"))
     path = Path(args.output)

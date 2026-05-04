@@ -13,7 +13,7 @@ def main() -> None:
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--length", type=int, required=True, help="Flag length in bytes.")
     parser.add_argument("--output", help="Optional answer file.")
-    parser.add_argument("--step", type=float, default=96.0)
+    parser.add_argument("--step", type=float, default=128.0)
     args = parser.parse_args()
 
     frames, _ = read_gray_video(args.input)
@@ -27,4 +27,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

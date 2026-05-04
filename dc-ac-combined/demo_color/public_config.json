@@ -20,11 +20,5 @@
     ]
   ],
   "source": "../videos/Video_Demo1.mp4",
-  "mode": "frame-DCT simulation, not codec-level MPEG",
-  "flag": "PTIT{combo_demo}",
-  "magic": "STEG",
-  "metrics_pre_encode": {
-    "mse": 0.017867058590057924,
-    "psnr": 65.61027299310885
-  }
+  "mode": "frame-DCT simulation, not codec-level MPEG"
 }
