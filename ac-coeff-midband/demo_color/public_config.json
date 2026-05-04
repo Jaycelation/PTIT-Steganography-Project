@@ -18,5 +18,6 @@
   ],
   "q_step": 64.0,
   "source": "../videos/Video_Demo1.mp4",
+  "max_width": 1280,
   "mode": "frame-DCT simulation, not codec-level MPEG"
 }
