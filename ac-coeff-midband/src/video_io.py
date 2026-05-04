@@ -8,6 +8,18 @@ import numpy as np
 from .dct_utils import crop_to_blocks
 
 
+MAX_READ_WIDTH = 320
+
+
+def normalize_gray(frame: np.ndarray, max_width: int = MAX_READ_WIDTH) -> np.ndarray:
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    h, w = gray.shape
+    if w > max_width:
+        new_h = max(8, int(round(h * (max_width / w))))
+        gray = cv2.resize(gray, (max_width, new_h), interpolation=cv2.INTER_AREA)
+    return crop_to_blocks(gray)
+
+
 def synthetic_video(width: int = 128, height: int = 96, frames: int = 40) -> list[np.ndarray]:
     out = []
     yy, xx = np.mgrid[0:height, 0:width]
@@ -28,7 +40,7 @@ def read_gray_video(path: str | Path) -> tuple[list[np.ndarray], float]:
         ok, frame = cap.read()
         if not ok:
             break
-        frames.append(crop_to_blocks(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)))
+        frames.append(normalize_gray(frame))
     cap.release()
     if not frames:
         raise ValueError(f"No frames read from: {path}")
@@ -45,4 +57,3 @@ def write_gray_video(path: str | Path, frames: list[np.ndarray], fps: float = 12
     for frame in frames:
         writer.write(cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR))
     writer.release()
-
