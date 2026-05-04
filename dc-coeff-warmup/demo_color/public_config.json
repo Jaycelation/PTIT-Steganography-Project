@@ -1,0 +1,10 @@
+{
+  "challenge": "dc-coeff-warmup",
+  "seed": 1337,
+  "flag_length_bytes": 19,
+  "bit_length": 152,
+  "step": 128.0,
+  "source": "../videos/Video_Demo1.mp4",
+  "max_width": 1280,
+  "mode": "frame-DCT simulation, not codec-level MPEG"
+}
