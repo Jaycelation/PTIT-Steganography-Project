@@ -4,14 +4,15 @@
   "flag_length_bytes": 22,
   "step": 80.0,
   "source": "../videos/Video_Demo1.mp4",
+  "max_width": 1280,
   "mode": "frame-DCT simulation with predicted-frame drift model",
   "metrics_no_comp_pre_encode": {
-    "mse": 1244.532745947761,
-    "psnr": 17.180740326855965
+    "mse": 101.70220419859017,
+    "psnr": 28.05749995350169
   },
   "metrics_comp_pre_encode": {
-    "mse": 0.16209406654008723,
-    "psnr": 56.03313243095653
+    "mse": 0.1667920289659474,
+    "psnr": 55.90905069115485
   },
   "flag": "PTIT{drift_demo_video}"
 }
