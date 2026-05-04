@@ -1,0 +1,12 @@
+{
+  "challenge": "dc-coeff-warmup",
+  "seed": 1337,
+  "flag_length_bytes": 19,
+  "bit_length": 152,
+  "step": 96.0,
+  "mode": "frame-DCT simulation, not codec-level MPEG",
+  "metrics_pre_encode": {
+    "mse": 1.045862268527142,
+    "psnr": Infinity
+  }
+}

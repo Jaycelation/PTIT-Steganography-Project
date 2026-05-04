@@ -1,0 +1,23 @@
+{
+  "challenge": "dc-ac-combined",
+  "seed": 2026,
+  "magic_length_bytes": 4,
+  "flag_length_bytes": 17,
+  "dc_step": 96.0,
+  "ac_step": 64.0,
+  "coefficient_candidates": [
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "mode": "frame-DCT simulation, not codec-level MPEG"
+}

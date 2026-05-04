@@ -1,0 +1,26 @@
+{
+  "challenge": "ac-coeff-midband",
+  "seed": 2026,
+  "flag_length_bytes": 23,
+  "coefficient_candidates": [
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "q_step": 64.0,
+  "mode": "frame-DCT simulation, not codec-level MPEG",
+  "flag": "PTIT{midband_ac_hidden}",
+  "metrics_pre_encode": {
+    "mse": 0.7089843630790711,
+    "psnr": Infinity
+  }
+}
