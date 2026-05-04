@@ -5,11 +5,11 @@
   "step": 80.0,
   "mode": "frame-DCT simulation with predicted-frame drift model",
   "metrics_no_comp_pre_encode": {
-    "mse": 1.0911593918256888,
-    "psnr": 49.8037630834393
+    "mse": 2.485026049117247,
+    "psnr": 44.82969828639722
   },
   "metrics_comp_pre_encode": {
-    "mse": 5.647783067077398,
-    "psnr": 41.00698408532037
+    "mse": 1.358883327183624,
+    "psnr": 47.5949592117552
   }
 }
