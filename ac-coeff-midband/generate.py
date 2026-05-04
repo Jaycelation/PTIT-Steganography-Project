@@ -42,6 +42,7 @@ def main() -> None:
         "flag_length_bytes": len(args.flag.encode("utf-8")),
         "coefficient_candidates": coeffs,
         "q_step": args.step,
+        "source": str(args.input) if args.input else "synthetic",
         "mode": "frame-DCT simulation, not codec-level MPEG",
     }
     private_config = {**public_config, "flag": args.flag, "metrics_pre_encode": average_metrics(frames, stego)}
@@ -54,4 +55,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

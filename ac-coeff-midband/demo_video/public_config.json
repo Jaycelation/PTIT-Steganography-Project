@@ -1,0 +1,22 @@
+{
+  "challenge": "ac-coeff-midband",
+  "seed": 2026,
+  "flag_length_bytes": 19,
+  "coefficient_candidates": [
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "q_step": 64.0,
+  "source": "../videos/Video_Demo1.mp4",
+  "mode": "frame-DCT simulation, not codec-level MPEG"
+}

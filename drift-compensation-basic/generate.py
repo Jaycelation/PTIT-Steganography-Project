@@ -7,11 +7,12 @@ from pathlib import Path
 from src.drift import apply_compensation_base, simulate_uncompensated_drift
 from src.embed import bytes_to_bits, embed_bits
 from src.metrics import average_metrics
-from src.video_io import synthetic_video, write_gray_video
+from src.video_io import read_gray_video, synthetic_video, write_gray_video
 
 
 def main() -> None:
     p = argparse.ArgumentParser(description="Generate drift-compensation-basic challenge.")
+    p.add_argument("--input", help="Optional input video. Frames are normalized to a small 8x8-block-aligned grayscale sequence.")
     p.add_argument("--flag", required=True)
     p.add_argument("--seed", type=int, required=True)
     p.add_argument("--output", default="output")
@@ -21,7 +22,7 @@ def main() -> None:
 
     out_dir = Path(args.output)
     (out_dir / "private").mkdir(parents=True, exist_ok=True)
-    frames = synthetic_video()
+    frames, fps = read_gray_video(args.input) if args.input else (synthetic_video(), 12.0)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
 
     embedded_plain = embed_bits(frames, bits, args.seed, args.step)
@@ -30,15 +31,16 @@ def main() -> None:
     stego_comp = embed_bits(comp_base, bits, args.seed, args.step)
 
     if args.mode in {"no-compensation", "both"}:
-        write_gray_video(out_dir / "stego_no_comp.mp4", stego_no_comp, 12.0)
+        write_gray_video(out_dir / "stego_no_comp.mp4", stego_no_comp, fps)
     if args.mode in {"compensation", "both"}:
-        write_gray_video(out_dir / "stego_comp.mp4", stego_comp, 12.0)
+        write_gray_video(out_dir / "stego_comp.mp4", stego_comp, fps)
 
     config = {
         "challenge": "drift-compensation-basic",
         "seed": args.seed,
         "flag_length_bytes": len(args.flag.encode("utf-8")),
         "step": args.step,
+        "source": str(args.input) if args.input else "synthetic",
         "mode": "frame-DCT simulation with predicted-frame drift model",
         "metrics_no_comp_pre_encode": average_metrics(frames, stego_no_comp),
         "metrics_comp_pre_encode": average_metrics(frames, stego_comp),
@@ -51,4 +53,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

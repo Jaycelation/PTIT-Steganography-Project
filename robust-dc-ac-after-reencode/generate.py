@@ -7,11 +7,12 @@ from pathlib import Path
 from src.embed import embed_robust
 from src.metrics import average_metrics
 from src.reencode import reencode_light
-from src.video_io import synthetic_video, write_gray_video
+from src.video_io import read_gray_video, synthetic_video, write_gray_video
 
 
 def main() -> None:
     p = argparse.ArgumentParser(description="Generate robust-dc-ac-after-reencode challenge.")
+    p.add_argument("--input", help="Optional input video. Frames are normalized to a small 8x8-block-aligned grayscale sequence.")
     p.add_argument("--flag", required=True)
     p.add_argument("--seed", type=int, required=True)
     p.add_argument("--repeat", type=int, default=5)
@@ -23,11 +24,11 @@ def main() -> None:
 
     out_dir = Path(args.output)
     (out_dir / "private").mkdir(parents=True, exist_ok=True)
-    frames = synthetic_video()
+    frames, fps = read_gray_video(args.input) if args.input else (synthetic_video(), 12.0)
     stego = embed_robust(frames, args.flag, args.seed, args.repeat, args.dc_step, args.ac_step)
     clean = out_dir / "stego_clean.mp4"
     reencoded = out_dir / "stego_reencoded.mp4"
-    write_gray_video(clean, stego, 12.0)
+    write_gray_video(clean, stego, fps)
     reencode_mode = reencode_light(clean, reencoded)
 
     public = {
@@ -38,6 +39,7 @@ def main() -> None:
         "dc_step": args.dc_step,
         "ac_step": args.ac_step,
         "reencode_mode": reencode_mode,
+        "source": str(args.input) if args.input else "synthetic",
         "mode": "frame-DCT simulation with repetition and majority vote",
     }
     private = {**public, "flag": args.flag, "metrics_clean_pre_encode": average_metrics(frames, stego)}
@@ -49,4 +51,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -38,6 +38,7 @@ def main() -> None:
         "flag_length_bytes": len(args.flag.encode("utf-8")),
         "bit_length": len(bits),
         "step": args.step,
+        "source": str(args.input) if args.input else "synthetic",
         "mode": "frame-DCT simulation, not codec-level MPEG",
         "metrics_pre_encode": metrics,
     }
@@ -61,4 +62,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
