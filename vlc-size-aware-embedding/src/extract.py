@@ -4,7 +4,7 @@ from .dct_utils import block_dct, extract_parity
 from .embed import bits_to_bytes, positions
 
 
-def extract_message(frames, seed: int, byte_length: int, step: float = 96.0, used_indices: list[int] | None = None) -> str:
+def extract_message(frames, seed: int, byte_length: int, step: float = 160.0, used_indices: list[int] | None = None) -> str:
     bits = []
     all_positions = positions(frames, seed)
     selected = [all_positions[i] for i in used_indices] if used_indices is not None else all_positions

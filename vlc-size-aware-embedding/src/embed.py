@@ -32,7 +32,7 @@ def positions(frames: list[np.ndarray], seed: int):
     return coords
 
 
-def embed_size_aware(frames: list[np.ndarray], bits: list[int], seed: int, step: float = 96.0) -> tuple[list[np.ndarray], list[int]]:
+def embed_size_aware(frames: list[np.ndarray], bits: list[int], seed: int, step: float = 160.0) -> tuple[list[np.ndarray], list[int]]:
     stego = [f.copy() for f in frames]
     used_indices: list[int] = []
     all_positions = positions(frames, seed)
