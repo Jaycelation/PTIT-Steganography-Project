@@ -13,6 +13,7 @@ from src.video_io import read_y_video, synthetic_video, write_y_video
 def main() -> None:
     p = argparse.ArgumentParser(description="Generate robust-dc-ac-after-reencode challenge.")
     p.add_argument("--input", help="Optional input video. Frames are normalized to a small 8x8-block-aligned grayscale sequence.")
+    p.add_argument("--max-width", type=int, default=0, help="Resize input video to this width before embedding. 0 keeps original size.")
     p.add_argument("--flag", required=True)
     p.add_argument("--seed", type=int, required=True)
     p.add_argument("--repeat", type=int, default=5)
@@ -24,7 +25,7 @@ def main() -> None:
 
     out_dir = Path(args.output)
     (out_dir / "private").mkdir(parents=True, exist_ok=True)
-    frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
+    frames, fps, chroma = read_y_video(args.input, args.max_width) if args.input else (synthetic_video(), 12.0, None)
     stego = embed_robust(frames, args.flag, args.seed, args.repeat, args.dc_step, args.ac_step)
     clean = out_dir / "stego_clean.mp4"
     reencoded = out_dir / "stego_reencoded.mp4"
@@ -40,6 +41,7 @@ def main() -> None:
         "ac_step": args.ac_step,
         "reencode_mode": reencode_mode,
         "source": str(args.input) if args.input else "synthetic",
+        "max_width": args.max_width if args.input else None,
         "mode": "frame-DCT simulation with repetition and majority vote",
     }
     private = {**public, "flag": args.flag, "metrics_clean_pre_encode": average_metrics(frames, stego)}

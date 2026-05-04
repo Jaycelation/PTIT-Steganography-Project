@@ -18,6 +18,7 @@ def parse_coeffs(raw: str) -> list[tuple[int, int]]:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate ac-coeff-midband challenge.")
     parser.add_argument("--input")
+    parser.add_argument("--max-width", type=int, default=0, help="Resize input video to this width before embedding. 0 keeps original size.")
     parser.add_argument("--flag", required=True)
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--output", default="output")
@@ -31,7 +32,7 @@ def main() -> None:
     private_dir.mkdir(parents=True, exist_ok=True)
 
     coeffs = parse_coeffs(args.coeffs)
-    frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
+    frames, fps, chroma = read_y_video(args.input, args.max_width) if args.input else (synthetic_video(), 12.0, None)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
     stego = embed_bits_ac(frames, bits, args.seed, coeffs, args.step)
     write_y_video(out_dir / "stego.mp4", stego, fps, chroma)
@@ -43,6 +44,7 @@ def main() -> None:
         "coefficient_candidates": coeffs,
         "q_step": args.step,
         "source": str(args.input) if args.input else "synthetic",
+        "max_width": args.max_width if args.input else None,
         "mode": "frame-DCT simulation, not codec-level MPEG",
     }
     private_config = {**public_config, "flag": args.flag, "metrics_pre_encode": average_metrics(frames, stego)}

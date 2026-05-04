@@ -12,6 +12,7 @@ from src.video_io import read_y_video, synthetic_video, write_y_video
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate dc-coeff-warmup challenge.")
     parser.add_argument("--input", help="Optional input video.")
+    parser.add_argument("--max-width", type=int, default=0, help="Resize input video to this width before embedding. 0 keeps original size.")
     parser.add_argument("--flag", required=True)
     parser.add_argument("--seed", type=int, required=True)
     parser.add_argument("--output", default="output")
@@ -24,7 +25,7 @@ def main() -> None:
     public_dir.mkdir(parents=True, exist_ok=True)
     private_dir.mkdir(parents=True, exist_ok=True)
 
-    frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
+    frames, fps, chroma = read_y_video(args.input, args.max_width) if args.input else (synthetic_video(), 12.0, None)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
     stego = embed_bits_dc(frames, bits, args.seed, args.step)
 
@@ -39,6 +40,7 @@ def main() -> None:
         "bit_length": len(bits),
         "step": args.step,
         "source": str(args.input) if args.input else "synthetic",
+        "max_width": args.max_width if args.input else None,
         "mode": "frame-DCT simulation, not codec-level MPEG",
         "metrics_pre_encode": metrics,
     }

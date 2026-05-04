@@ -8,24 +8,24 @@ import numpy as np
 from .dct_utils import crop_to_blocks
 
 
-MAX_READ_WIDTH = 320
+MAX_READ_WIDTH = 0
 
 
 def normalize_bgr(frame: np.ndarray, max_width: int = MAX_READ_WIDTH) -> np.ndarray:
     h, w = frame.shape[:2]
-    if w > max_width:
+    if max_width and w > max_width:
         new_h = max(8, int(round(h * (max_width / w))))
         frame = cv2.resize(frame, (max_width, new_h), interpolation=cv2.INTER_AREA)
     return crop_to_blocks(frame)
 
 
-def split_y_chroma(frame: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    ycrcb = cv2.cvtColor(normalize_bgr(frame), cv2.COLOR_BGR2YCrCb)
+def split_y_chroma(frame: np.ndarray, max_width: int = MAX_READ_WIDTH) -> tuple[np.ndarray, np.ndarray]:
+    ycrcb = cv2.cvtColor(normalize_bgr(frame, max_width), cv2.COLOR_BGR2YCrCb)
     return ycrcb[:, :, 0].copy(), ycrcb[:, :, 1:3].copy()
 
 
 def normalize_gray(frame: np.ndarray, max_width: int = MAX_READ_WIDTH) -> np.ndarray:
-    y, _ = split_y_chroma(frame)
+    y, _ = split_y_chroma(frame, max_width)
     return y
 
 
@@ -40,7 +40,7 @@ def synthetic_video(width: int = 128, height: int = 96, frames: int = 40) -> lis
     return out
 
 
-def read_gray_video(path: str | Path) -> tuple[list[np.ndarray], float]:
+def read_gray_video(path: str | Path, max_width: int = MAX_READ_WIDTH) -> tuple[list[np.ndarray], float]:
     cap = cv2.VideoCapture(str(path))
     if not cap.isOpened():
         raise ValueError(f"Cannot open video: {path}")
@@ -50,7 +50,7 @@ def read_gray_video(path: str | Path) -> tuple[list[np.ndarray], float]:
         ok, frame = cap.read()
         if not ok:
             break
-        y, _ = split_y_chroma(frame)
+        y, _ = split_y_chroma(frame, max_width)
         frames.append(y)
     cap.release()
     if not frames:
@@ -58,7 +58,7 @@ def read_gray_video(path: str | Path) -> tuple[list[np.ndarray], float]:
     return frames, float(fps)
 
 
-def read_y_video(path: str | Path) -> tuple[list[np.ndarray], float, list[np.ndarray]]:
+def read_y_video(path: str | Path, max_width: int = MAX_READ_WIDTH) -> tuple[list[np.ndarray], float, list[np.ndarray]]:
     cap = cv2.VideoCapture(str(path))
     if not cap.isOpened():
         raise ValueError(f"Cannot open video: {path}")
@@ -69,7 +69,7 @@ def read_y_video(path: str | Path) -> tuple[list[np.ndarray], float, list[np.nda
         ok, frame = cap.read()
         if not ok:
             break
-        y, crcb = split_y_chroma(frame)
+        y, crcb = split_y_chroma(frame, max_width)
         frames.append(y)
         chroma.append(crcb)
     cap.release()

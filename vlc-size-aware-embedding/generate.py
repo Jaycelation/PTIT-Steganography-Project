@@ -12,6 +12,7 @@ from src.video_io import read_y_video, synthetic_video, write_y_video
 def main() -> None:
     p = argparse.ArgumentParser(description="Generate vlc-size-aware-embedding challenge.")
     p.add_argument("--input", help="Optional input video. Frames are normalized to a small 8x8-block-aligned grayscale sequence.")
+    p.add_argument("--max-width", type=int, default=0, help="Resize input video to this width before embedding. 0 keeps original size.")
     p.add_argument("--flag", required=True)
     p.add_argument("--seed", type=int, required=True)
     p.add_argument("--output", default="output")
@@ -21,7 +22,7 @@ def main() -> None:
     out_dir = Path(args.output)
     (out_dir / "private").mkdir(parents=True, exist_ok=True)
     step = args.step if args.step is not None else (224.0 if args.input else 160.0)
-    frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
+    frames, fps, chroma = read_y_video(args.input, args.max_width) if args.input else (synthetic_video(), 12.0, None)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
     stego, used_indices = embed_size_aware(frames, bits, args.seed, step)
     write_y_video(out_dir / "stego.mp4", stego, fps, chroma)
@@ -35,6 +36,7 @@ def main() -> None:
         "used_position_indices": used_indices,
         "vlc_rule": "estimated_vlc_size(new_coef) <= estimated_vlc_size(old_coef)",
         "source": str(args.input) if args.input else "synthetic",
+        "max_width": args.max_width if args.input else None,
         "mode": "frame-DCT simulation with fake VLC size model",
     }
     private = {**public, "flag": args.flag, "metrics_pre_encode": average_metrics(frames, stego)}
