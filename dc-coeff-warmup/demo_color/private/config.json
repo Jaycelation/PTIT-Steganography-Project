@@ -5,9 +5,10 @@
   "bit_length": 152,
   "step": 128.0,
   "source": "../videos/Video_Demo1.mp4",
+  "max_width": 1280,
   "mode": "frame-DCT simulation, not codec-level MPEG",
   "metrics_pre_encode": {
-    "mse": 0.052531772074658326,
-    "psnr": 60.9265830959336
+    "mse": 0.002684811819269652,
+    "psnr": 73.84166509833021
   }
 }

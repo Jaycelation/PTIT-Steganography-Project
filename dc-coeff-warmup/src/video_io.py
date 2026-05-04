@@ -93,6 +93,7 @@ def write_y_video(
     writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h), True)
     if not writer.isOpened():
         raise ValueError(f"Cannot create video: {path}")
+    writer.set(cv2.VIDEOWRITER_PROP_QUALITY, 100)
     for i, y in enumerate(frames):
         if chroma_frames is None:
             bgr = cv2.cvtColor(y, cv2.COLOR_GRAY2BGR)
