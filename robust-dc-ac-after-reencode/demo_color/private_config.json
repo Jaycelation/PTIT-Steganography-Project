@@ -7,11 +7,11 @@
   "ac_step": 96.0,
   "reencode_mode": "copy-fallback-no-ffmpeg",
   "source": "../videos/Video_Demo1.mp4",
-  "max_width": 1280,
+  "max_width": 0,
   "mode": "frame-DCT simulation with repetition and majority vote",
   "flag": "PTIT{robust_demo}",
   "metrics_clean_pre_encode": {
-    "mse": 0.010956553937214794,
-    "psnr": 67.73406379838539
+    "mse": 0.004662161207200095,
+    "psnr": 71.4449307448322
   }
 }
