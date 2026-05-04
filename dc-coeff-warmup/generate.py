@@ -6,7 +6,7 @@ from pathlib import Path
 
 from src.embed import bytes_to_bits, embed_bits_dc
 from src.metrics import average_metrics
-from src.video_io import read_gray_video, synthetic_video, write_gray_video
+from src.video_io import read_y_video, synthetic_video, write_y_video
 
 
 def main() -> None:
@@ -24,12 +24,12 @@ def main() -> None:
     public_dir.mkdir(parents=True, exist_ok=True)
     private_dir.mkdir(parents=True, exist_ok=True)
 
-    frames, fps = read_gray_video(args.input) if args.input else (synthetic_video(), 12.0)
+    frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
     stego = embed_bits_dc(frames, bits, args.seed, args.step)
 
     stego_path = out_dir / "stego.mp4"
-    write_gray_video(stego_path, stego, fps)
+    write_y_video(stego_path, stego, fps, chroma)
 
     metrics = average_metrics(frames, stego)
     config = {

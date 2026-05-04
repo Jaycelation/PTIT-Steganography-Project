@@ -6,7 +6,7 @@ from pathlib import Path
 
 from src.embed import DEFAULT_COEFFS, bytes_to_bits, embed_bits_ac
 from src.metrics import average_metrics
-from src.video_io import read_gray_video, synthetic_video, write_gray_video
+from src.video_io import read_y_video, synthetic_video, write_y_video
 
 
 def parse_coeffs(raw: str) -> list[tuple[int, int]]:
@@ -31,10 +31,10 @@ def main() -> None:
     private_dir.mkdir(parents=True, exist_ok=True)
 
     coeffs = parse_coeffs(args.coeffs)
-    frames, fps = read_gray_video(args.input) if args.input else (synthetic_video(), 12.0)
+    frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
     stego = embed_bits_ac(frames, bits, args.seed, coeffs, args.step)
-    write_gray_video(out_dir / "stego.mp4", stego, fps)
+    write_y_video(out_dir / "stego.mp4", stego, fps, chroma)
 
     public_config = {
         "challenge": "ac-coeff-midband",

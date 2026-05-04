@@ -6,7 +6,7 @@ from pathlib import Path
 
 from src.embed import bytes_to_bits, embed_size_aware
 from src.metrics import average_metrics
-from src.video_io import read_gray_video, synthetic_video, write_gray_video
+from src.video_io import read_y_video, synthetic_video, write_y_video
 
 
 def main() -> None:
@@ -20,10 +20,10 @@ def main() -> None:
 
     out_dir = Path(args.output)
     (out_dir / "private").mkdir(parents=True, exist_ok=True)
-    frames, fps = read_gray_video(args.input) if args.input else (synthetic_video(), 12.0)
+    frames, fps, chroma = read_y_video(args.input) if args.input else (synthetic_video(), 12.0, None)
     bits = bytes_to_bits(args.flag.encode("utf-8"))
     stego, used_indices = embed_size_aware(frames, bits, args.seed, args.step)
-    write_gray_video(out_dir / "stego.mp4", stego, fps)
+    write_y_video(out_dir / "stego.mp4", stego, fps, chroma)
 
     public = {
         "challenge": "vlc-size-aware-embedding",

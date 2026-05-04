@@ -2,7 +2,7 @@
 
 ## TL;DR
 
-Các challenge có thể nhận video thật qua `--input`. Khi đọc video đầu vào, code normalize frame về grayscale, resize chiều rộng tối đa 320 px, rồi crop về bội số 8 để DCT block 8x8 ổn định.
+Các challenge có thể nhận video thật qua `--input`. Khi đọc video đầu vào, code normalize frame về YCrCb, chỉ nhúng trên kênh sáng Y, giữ lại Cr/Cb để video stego demo vẫn có màu, rồi crop về bội số 8 để DCT block 8x8 ổn định.
 
 Video demo hiện dùng:
 
