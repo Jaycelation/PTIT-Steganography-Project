@@ -1,0 +1,10 @@
+{
+  "challenge": "robust-dc-ac-after-reencode",
+  "seed": 9001,
+  "repeat": 5,
+  "flag_length_bytes": 18,
+  "dc_step": 120.0,
+  "ac_step": 96.0,
+  "reencode_mode": "copy-fallback-no-ffmpeg",
+  "mode": "frame-DCT simulation with repetition and majority vote"
+}

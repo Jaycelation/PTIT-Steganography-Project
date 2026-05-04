@@ -1,0 +1,15 @@
+{
+  "challenge": "drift-compensation-basic",
+  "seed": 404,
+  "flag_length_bytes": 23,
+  "step": 80.0,
+  "mode": "frame-DCT simulation with predicted-frame drift model",
+  "metrics_no_comp_pre_encode": {
+    "mse": 1.0911593918256888,
+    "psnr": 49.8037630834393
+  },
+  "metrics_comp_pre_encode": {
+    "mse": 5.647783067077398,
+    "psnr": 41.00698408532037
+  }
+}
