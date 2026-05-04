@@ -1,0 +1,78 @@
+{
+  "source": {
+    "width": 1920,
+    "height": 1080,
+    "frames": 341,
+    "fps": 25.0,
+    "bytes": 13794847,
+    "size_mb": 13.155791282653809
+  },
+  "demos": [
+    {
+      "challenge": "dc-coeff-warmup",
+      "path": "dc-coeff-warmup\\demo_color\\stego.mp4",
+      "resolution": "1280x720",
+      "resolution_vs_source": 0.4444444444444444,
+      "size_mb": 11.971389770507812,
+      "size_vs_source": 0.9099710928290832,
+      "sampled_psnr_db": 34.551501524728614,
+      "mean_saturation_delta": 1.8284592013888894,
+      "sharpness_ratio_vs_resized_source": 0.9737491792572652
+    },
+    {
+      "challenge": "ac-coeff-midband",
+      "path": "ac-coeff-midband\\demo_color\\stego.mp4",
+      "resolution": "1280x720",
+      "resolution_vs_source": 0.4444444444444444,
+      "size_mb": 11.97135066986084,
+      "size_vs_source": 0.9099681207047821,
+      "sampled_psnr_db": 34.55160174107875,
+      "mean_saturation_delta": 1.8283629014756932,
+      "sharpness_ratio_vs_resized_source": 0.9737516267999173
+    },
+    {
+      "challenge": "dc-ac-combined",
+      "path": "dc-ac-combined\\demo_color\\stego.mp4",
+      "resolution": "1280x720",
+      "resolution_vs_source": 0.4444444444444444,
+      "size_mb": 11.971359252929688,
+      "size_vs_source": 0.9099687731223115,
+      "sampled_psnr_db": 34.55179019392847,
+      "mean_saturation_delta": 1.8286370623553239,
+      "sharpness_ratio_vs_resized_source": 0.9737461667061358
+    },
+    {
+      "challenge": "drift-compensation-basic",
+      "path": "drift-compensation-basic\\demo_color\\stego_comp.mp4",
+      "resolution": "1280x720",
+      "resolution_vs_source": 0.4444444444444444,
+      "size_mb": 12.059706687927246,
+      "size_vs_source": 0.9166842517354488,
+      "sampled_psnr_db": 34.5303537166775,
+      "mean_saturation_delta": 1.8505429868344911,
+      "sharpness_ratio_vs_resized_source": 0.9749285296347693
+    },
+    {
+      "challenge": "vlc-size-aware-embedding",
+      "path": "vlc-size-aware-embedding\\demo_color\\stego.mp4",
+      "resolution": "1280x720",
+      "resolution_vs_source": 0.4444444444444444,
+      "size_mb": 11.971339225769043,
+      "size_vs_source": 0.9099672508147426,
+      "sampled_psnr_db": 34.54988545537284,
+      "mean_saturation_delta": 1.8287972909432864,
+      "sharpness_ratio_vs_resized_source": 0.973752716157743
+    },
+    {
+      "challenge": "robust-dc-ac-after-reencode",
+      "path": "robust-dc-ac-after-reencode\\demo_color\\stego_reencoded.mp4",
+      "resolution": "1280x720",
+      "resolution_vs_source": 0.4444444444444444,
+      "size_mb": 11.97561264038086,
+      "size_vs_source": 0.9102920822536126,
+      "sampled_psnr_db": 34.54931441500579,
+      "mean_saturation_delta": 1.8292647750289344,
+      "sharpness_ratio_vs_resized_source": 0.9737780635762509
+    }
+  ]
+}
