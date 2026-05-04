@@ -1,1 +1,1 @@
-PTIT{vlc_demo}
+PDIT{v,b_demo}
