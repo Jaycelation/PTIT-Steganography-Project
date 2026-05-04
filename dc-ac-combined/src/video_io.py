@@ -11,13 +11,22 @@ from .dct_utils import crop_to_blocks
 MAX_READ_WIDTH = 320
 
 
-def normalize_gray(frame: np.ndarray, max_width: int = MAX_READ_WIDTH) -> np.ndarray:
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    h, w = gray.shape
+def normalize_bgr(frame: np.ndarray, max_width: int = MAX_READ_WIDTH) -> np.ndarray:
+    h, w = frame.shape[:2]
     if w > max_width:
         new_h = max(8, int(round(h * (max_width / w))))
-        gray = cv2.resize(gray, (max_width, new_h), interpolation=cv2.INTER_AREA)
-    return crop_to_blocks(gray)
+        frame = cv2.resize(frame, (max_width, new_h), interpolation=cv2.INTER_AREA)
+    return crop_to_blocks(frame)
+
+
+def split_y_chroma(frame: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    ycrcb = cv2.cvtColor(normalize_bgr(frame), cv2.COLOR_BGR2YCrCb)
+    return ycrcb[:, :, 0].copy(), ycrcb[:, :, 1:3].copy()
+
+
+def normalize_gray(frame: np.ndarray, max_width: int = MAX_READ_WIDTH) -> np.ndarray:
+    y, _ = split_y_chroma(frame)
+    return y
 
 
 def synthetic_video(width: int = 128, height: int = 96, frames: int = 44) -> list[np.ndarray]:
@@ -41,20 +50,55 @@ def read_gray_video(path: str | Path) -> tuple[list[np.ndarray], float]:
         ok, frame = cap.read()
         if not ok:
             break
-        frames.append(normalize_gray(frame))
+        y, _ = split_y_chroma(frame)
+        frames.append(y)
     cap.release()
     if not frames:
         raise ValueError(f"No frames read from: {path}")
     return frames, float(fps)
 
 
-def write_gray_video(path: str | Path, frames: list[np.ndarray], fps: float = 12.0) -> None:
+def read_y_video(path: str | Path) -> tuple[list[np.ndarray], float, list[np.ndarray]]:
+    cap = cv2.VideoCapture(str(path))
+    if not cap.isOpened():
+        raise ValueError(f"Cannot open video: {path}")
+    fps = cap.get(cv2.CAP_PROP_FPS) or 12.0
+    frames: list[np.ndarray] = []
+    chroma: list[np.ndarray] = []
+    while True:
+        ok, frame = cap.read()
+        if not ok:
+            break
+        y, crcb = split_y_chroma(frame)
+        frames.append(y)
+        chroma.append(crcb)
+    cap.release()
+    if not frames:
+        raise ValueError(f"No frames read from: {path}")
+    return frames, float(fps), chroma
+
+
+def write_y_video(
+    path: str | Path,
+    frames: list[np.ndarray],
+    fps: float = 12.0,
+    chroma_frames: list[np.ndarray] | None = None,
+) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     h, w = frames[0].shape
     writer = cv2.VideoWriter(str(path), cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h), True)
     if not writer.isOpened():
         raise ValueError(f"Cannot create video: {path}")
-    for frame in frames:
-        writer.write(cv2.cvtColor(frame, cv2.COLOR_GRAY2BGR))
+    for i, y in enumerate(frames):
+        if chroma_frames is None:
+            bgr = cv2.cvtColor(y, cv2.COLOR_GRAY2BGR)
+        else:
+            ycrcb = np.dstack([y, chroma_frames[i]])
+            bgr = cv2.cvtColor(ycrcb, cv2.COLOR_YCrCb2BGR)
+        writer.write(bgr)
     writer.release()
+
+
+def write_gray_video(path: str | Path, frames: list[np.ndarray], fps: float = 12.0) -> None:
+    write_y_video(path, frames, fps)
