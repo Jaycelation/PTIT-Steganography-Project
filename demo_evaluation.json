@@ -11,68 +11,68 @@
     {
       "challenge": "dc-coeff-warmup",
       "path": "dc-coeff-warmup\\demo_color\\stego.mp4",
-      "resolution": "1280x720",
-      "resolution_vs_source": 0.4444444444444444,
-      "size_mb": 11.971389770507812,
-      "size_vs_source": 0.9099710928290832,
-      "sampled_psnr_db": 34.551501524728614,
-      "mean_saturation_delta": 1.8284592013888894,
-      "sharpness_ratio_vs_resized_source": 0.9737491792572652
+      "resolution": "1920x1080",
+      "resolution_vs_source": 1.0,
+      "size_mb": 30.449936866760254,
+      "size_vs_source": 2.314565214097699,
+      "sampled_psnr_db": 34.891708196767816,
+      "mean_saturation_delta": 1.6839263840663594,
+      "sharpness_ratio_vs_source": 0.9749035432867684
     },
     {
       "challenge": "ac-coeff-midband",
       "path": "ac-coeff-midband\\demo_color\\stego.mp4",
-      "resolution": "1280x720",
-      "resolution_vs_source": 0.4444444444444444,
-      "size_mb": 11.97135066986084,
-      "size_vs_source": 0.9099681207047821,
-      "sampled_psnr_db": 34.55160174107875,
-      "mean_saturation_delta": 1.8283629014756932,
-      "sharpness_ratio_vs_resized_source": 0.9737516267999173
+      "resolution": "1920x1080",
+      "resolution_vs_source": 1.0,
+      "size_mb": 30.449538230895996,
+      "size_vs_source": 2.314534912927994,
+      "sampled_psnr_db": 34.89199109870427,
+      "mean_saturation_delta": 1.6840664785879618,
+      "sharpness_ratio_vs_source": 0.9749037705338278
     },
     {
       "challenge": "dc-ac-combined",
       "path": "dc-ac-combined\\demo_color\\stego.mp4",
-      "resolution": "1280x720",
-      "resolution_vs_source": 0.4444444444444444,
-      "size_mb": 11.971359252929688,
-      "size_vs_source": 0.9099687731223115,
-      "sampled_psnr_db": 34.55179019392847,
-      "mean_saturation_delta": 1.8286370623553239,
-      "sharpness_ratio_vs_resized_source": 0.9737461667061358
+      "resolution": "1920x1080",
+      "resolution_vs_source": 1.0,
+      "size_mb": 30.449450492858887,
+      "size_vs_source": 2.3145282437710257,
+      "sampled_psnr_db": 34.89202925119133,
+      "mean_saturation_delta": 1.6841843492798354,
+      "sharpness_ratio_vs_source": 0.9749007861061455
     },
     {
       "challenge": "drift-compensation-basic",
       "path": "drift-compensation-basic\\demo_color\\stego_comp.mp4",
-      "resolution": "1280x720",
-      "resolution_vs_source": 0.4444444444444444,
-      "size_mb": 12.059706687927246,
-      "size_vs_source": 0.9166842517354488,
-      "sampled_psnr_db": 34.5303537166775,
-      "mean_saturation_delta": 1.8505429868344911,
-      "sharpness_ratio_vs_resized_source": 0.9749285296347693
+      "resolution": "1920x1080",
+      "resolution_vs_source": 1.0,
+      "size_mb": 30.68179416656494,
+      "size_vs_source": 2.3321891862954334,
+      "sampled_psnr_db": 34.87138504835361,
+      "mean_saturation_delta": 1.7011560812114197,
+      "sharpness_ratio_vs_source": 0.9760517754839081
     },
     {
       "challenge": "vlc-size-aware-embedding",
       "path": "vlc-size-aware-embedding\\demo_color\\stego.mp4",
-      "resolution": "1280x720",
-      "resolution_vs_source": 0.4444444444444444,
-      "size_mb": 11.971339225769043,
-      "size_vs_source": 0.9099672508147426,
-      "sampled_psnr_db": 34.54988545537284,
-      "mean_saturation_delta": 1.8287972909432864,
-      "sharpness_ratio_vs_resized_source": 0.973752716157743
+      "resolution": "1920x1080",
+      "resolution_vs_source": 1.0,
+      "size_mb": 30.44953441619873,
+      "size_vs_source": 2.3145346229646475,
+      "sampled_psnr_db": 34.89199073401185,
+      "mean_saturation_delta": 1.6839840133101855,
+      "sharpness_ratio_vs_source": 0.9749022658944967
     },
     {
       "challenge": "robust-dc-ac-after-reencode",
       "path": "robust-dc-ac-after-reencode\\demo_color\\stego_reencoded.mp4",
-      "resolution": "1280x720",
-      "resolution_vs_source": 0.4444444444444444,
-      "size_mb": 11.97561264038086,
-      "size_vs_source": 0.9102920822536126,
-      "sampled_psnr_db": 34.54931441500579,
-      "mean_saturation_delta": 1.8292647750289344,
-      "sharpness_ratio_vs_resized_source": 0.9737780635762509
+      "resolution": "1920x1080",
+      "resolution_vs_source": 1.0,
+      "size_mb": 30.45352077484131,
+      "size_vs_source": 2.3148376346616963,
+      "sampled_psnr_db": 34.89080456734781,
+      "mean_saturation_delta": 1.6841103234310708,
+      "sharpness_ratio_vs_source": 0.9749146927567249
     }
   ]
 }
