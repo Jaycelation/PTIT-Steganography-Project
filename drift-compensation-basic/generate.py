@@ -12,7 +12,7 @@ from src.video_io import read_y_video, synthetic_video, write_y_video
 
 def main() -> None:
     p = argparse.ArgumentParser(description="Generate drift-compensation-basic challenge.")
-    p.add_argument("--input", help="Optional input video. Frames are normalized to a small 8x8-block-aligned grayscale sequence.")
+    p.add_argument("--input", help="Optional input video. Embedding uses the Y channel and preserves chroma.")
     p.add_argument("--max-width", type=int, default=0, help="Resize input video to this width before embedding. 0 keeps original size.")
     p.add_argument("--flag", required=True)
     p.add_argument("--seed", type=int, required=True)

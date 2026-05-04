@@ -1,22 +1,23 @@
-# Demo Với `videos/Video_Demo1.mp4`
+# Demo voi `videos/Video_Demo1.mp4`
 
 ## TL;DR
 
-Các challenge có thể nhận video thật qua `--input`. Khi đọc video đầu vào, code normalize frame về YCrCb, chỉ nhúng trên kênh sáng Y, giữ lại Cr/Cb để video stego demo vẫn có màu, rồi crop về bội số 8 để DCT block 8x8 ổn định.
+Demo dung video that trong `videos/Video_Demo1.mp4`. Pipeline xu ly theo YCrCb:
 
-Video demo hiện dùng:
+- Chi nhung/extract tren kenh Y.
+- Giu lai Cr/Cb de video stego van co mau.
+- Mac dinh code khong downscale; `--max-width 0` nghia la giu kich thuoc goc.
+- Demo mac dinh ben duoi dung `--max-width 1280` de can bang chat luong va RAM.
 
-```powershell
-videos/Video_Demo1.mp4
-```
+Neu muon giu nguyen 1920x1080, bo `--max-width 1280` hoac truyen `--max-width 0`. Luu y cac bai drift/robust co the ton RAM va chay lau hon.
 
-## Lệnh Demo
+## Lenh Demo HQ
 
 ### dc-coeff-warmup
 
 ```powershell
 cd dc-coeff-warmup
-python -B generate.py --input ../videos/Video_Demo1.mp4 --flag "PTIT{dc_demo_video}" --seed 1337 --output demo_color/
+python -B generate.py --input ../videos/Video_Demo1.mp4 --max-width 1280 --flag "PTIT{dc_demo_video}" --seed 1337 --output demo_color/
 python -B solve.py --input demo_color/stego.mp4 --seed 1337 --length 19 --output demo_color/answer.txt
 python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_color/private/flag.txt
 ```
@@ -25,7 +26,7 @@ python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_co
 
 ```powershell
 cd ac-coeff-midband
-python -B generate.py --input ../videos/Video_Demo1.mp4 --flag "PTIT{ac_demo_video}" --seed 2026 --output demo_color/
+python -B generate.py --input ../videos/Video_Demo1.mp4 --max-width 1280 --flag "PTIT{ac_demo_video}" --seed 2026 --output demo_color/
 python -B solve.py --input demo_color/stego.mp4 --config demo_color/public_config.json --output demo_color/answer.txt
 python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_color/private/flag.txt
 ```
@@ -34,7 +35,7 @@ python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_co
 
 ```powershell
 cd dc-ac-combined
-python -B generate.py --input ../videos/Video_Demo1.mp4 --flag "PTIT{combo_demo}" --seed 2026 --output demo_color/
+python -B generate.py --input ../videos/Video_Demo1.mp4 --max-width 1280 --flag "PTIT{combo_demo}" --seed 2026 --output demo_color/
 python -B solve.py --input demo_color/stego.mp4 --config demo_color/public_config.json --output demo_color/answer.txt
 python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_color/private/flag.txt
 ```
@@ -43,7 +44,7 @@ python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_co
 
 ```powershell
 cd drift-compensation-basic
-python -B generate.py --input ../videos/Video_Demo1.mp4 --flag "PTIT{drift_demo_video}" --seed 404 --output demo_color/
+python -B generate.py --input ../videos/Video_Demo1.mp4 --max-width 1280 --flag "PTIT{drift_demo_video}" --seed 404 --output demo_color/
 python -B solve.py --input demo_color/stego_comp.mp4 --seed 404 --output demo_color/answer.txt
 python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_color/private/flag.txt
 ```
@@ -52,7 +53,7 @@ python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_co
 
 ```powershell
 cd vlc-size-aware-embedding
-python -B generate.py --input ../videos/Video_Demo1.mp4 --flag "PTIT{vlc_demo}" --seed 1337 --output demo_color/
+python -B generate.py --input ../videos/Video_Demo1.mp4 --max-width 1280 --flag "PTIT{vlc_demo}" --seed 1337 --output demo_color/
 python -B solve.py --input demo_color/stego.mp4 --seed 1337 --output demo_color/answer.txt
 python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_color/private/flag.txt
 ```
@@ -61,13 +62,13 @@ python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_co
 
 ```powershell
 cd robust-dc-ac-after-reencode
-python -B generate.py --input ../videos/Video_Demo1.mp4 --flag "PTIT{robust_demo}" --seed 9001 --repeat 5 --output demo_color/
+python -B generate.py --input ../videos/Video_Demo1.mp4 --max-width 1280 --flag "PTIT{robust_demo}" --seed 9001 --repeat 5 --output demo_color/
 python -B solve.py --input demo_color/stego_reencoded.mp4 --seed 9001 --repeat 5 --output demo_color/answer.txt
 python -B checker.py --answer-file demo_color/answer.txt --expected-file demo_color/private/flag.txt
 ```
 
-## Ghi Chú
+## Ghi chu
 
-- Đây vẫn là mô phỏng frame-DCT local, không phải sửa bitstream MPEG codec-level.
-- Nếu máy có `ffmpeg`, bài robust sẽ re-encode bằng libx264 CRF 18; nếu không có, script dùng copy fallback để demo vẫn chạy.
-- Output demo nằm trong thư mục `demo_color/` của từng challenge.
+- Day van la mo phong frame-DCT local, khong phai sua bitstream MPEG codec-level.
+- Neu may co `ffmpeg`, bai robust se re-encode bang libx264 CRF 18; neu khong co, script dung copy fallback de demo van chay.
+- Output demo nam trong thu muc `demo_color/` cua tung challenge.
