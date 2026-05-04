@@ -3,10 +3,11 @@
   "seed": 404,
   "flag_length_bytes": 23,
   "step": 80.0,
+  "source": "synthetic",
   "mode": "frame-DCT simulation with predicted-frame drift model",
   "metrics_no_comp_pre_encode": {
-    "mse": 2.485026049117247,
-    "psnr": 44.177494153122076
+    "mse": 2786.505814588318,
+    "psnr": 13.680204072345335
   },
   "metrics_comp_pre_encode": {
     "mse": 1.358883327183624,

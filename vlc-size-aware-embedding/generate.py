@@ -15,7 +15,7 @@ def main() -> None:
     p.add_argument("--flag", required=True)
     p.add_argument("--seed", type=int, required=True)
     p.add_argument("--output", default="output")
-    p.add_argument("--step", type=float, default=160.0)
+    p.add_argument("--step", type=float, default=224.0)
     args = p.parse_args()
 
     out_dir = Path(args.output)

@@ -29,3 +29,6 @@ python checker.py --answer-file output/answer.txt
 
 Kỳ vọng: `PASS`.
 
+## Demo Với Video Thật
+
+Repo có thể dùng `videos/Video_Demo1.mp4` làm nguồn demo. Xem [DEMO.md](DEMO.md) để chạy lại toàn bộ demo bằng video này.
