@@ -4,14 +4,14 @@
   "flag_length_bytes": 22,
   "step": 80.0,
   "source": "../videos/Video_Demo1.mp4",
-  "max_width": 1280,
+  "max_width": 0,
   "mode": "frame-DCT simulation with predicted-frame drift model",
   "metrics_no_comp_pre_encode": {
-    "mse": 101.70220419859017,
-    "psnr": 28.05749995350169
+    "mse": 43.29462827110043,
+    "psnr": 31.766463457371778
   },
   "metrics_comp_pre_encode": {
-    "mse": 0.1667920289659474,
-    "psnr": 55.90905069115485
+    "mse": 0.17729934682943954,
+    "psnr": 55.643732252043456
   }
 }
