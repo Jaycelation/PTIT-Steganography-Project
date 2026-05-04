@@ -6,10 +6,10 @@
   "mode": "frame-DCT simulation with predicted-frame drift model",
   "metrics_no_comp_pre_encode": {
     "mse": 2.485026049117247,
-    "psnr": 44.82969828639722
+    "psnr": 44.177494153122076
   },
   "metrics_comp_pre_encode": {
     "mse": 1.358883327183624,
-    "psnr": 47.5949592117552
+    "psnr": 46.79898190769367
   }
 }

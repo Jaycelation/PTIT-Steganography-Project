@@ -16,5 +16,6 @@ def psnr(a: np.ndarray, b: np.ndarray) -> float:
 
 
 def average_metrics(a: list[np.ndarray], b: list[np.ndarray]) -> dict[str, float]:
-    return {"mse": float(np.mean([mse(x, y) for x, y in zip(a, b)])), "psnr": float(np.mean([psnr(x, y) for x, y in zip(a, b)]))}
-
+    avg_mse = float(np.mean([mse(x, y) for x, y in zip(a, b)]))
+    avg_psnr = float("inf") if avg_mse == 0 else 20.0 * math.log10(255.0 / math.sqrt(avg_mse))
+    return {"mse": avg_mse, "psnr": avg_psnr}

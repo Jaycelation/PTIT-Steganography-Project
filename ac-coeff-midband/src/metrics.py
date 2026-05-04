@@ -17,8 +17,9 @@ def psnr(a: np.ndarray, b: np.ndarray) -> float:
 
 def average_metrics(original: list[np.ndarray], stego: list[np.ndarray]) -> dict[str, float]:
     mses = [mse(a, b) for a, b in zip(original, stego)]
-    psnrs = [psnr(a, b) for a, b in zip(original, stego)]
-    return {"mse": float(np.mean(mses)), "psnr": float(np.mean(psnrs))}
+    avg_mse = float(np.mean(mses))
+    avg_psnr = float("inf") if avg_mse == 0 else 20.0 * math.log10(255.0 / math.sqrt(avg_mse))
+    return {"mse": avg_mse, "psnr": avg_psnr}
 
 
 def bit_error_rate(expected: list[int], actual: list[int]) -> float:
@@ -26,4 +27,3 @@ def bit_error_rate(expected: list[int], actual: list[int]) -> float:
         return 0.0
     errors = sum(int(a != b) for a, b in zip(expected, actual))
     return errors / len(expected)
-

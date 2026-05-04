@@ -7,6 +7,6 @@
   "mode": "frame-DCT simulation, not codec-level MPEG",
   "metrics_pre_encode": {
     "mse": 1.045862268527142,
-    "psnr": Infinity
+    "psnr": 47.93605865588197
   }
 }
