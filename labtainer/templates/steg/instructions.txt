@@ -1,0 +1,10 @@
+Video Steganography Lab
+
+Workspace:
+  /home/student/steg-video-labs
+
+Start with:
+  cd /home/student/steg-video-labs
+  ./run_all_checks.sh
+
+Each challenge directory contains its own README and solve.py. Work from inside the challenge directory when running commands.

@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+chmod +x /home/student/steg-video-labs/run_all_checks.sh 2>/dev/null || true
+chown -R student:student /home/student/steg-video-labs 2>/dev/null || true

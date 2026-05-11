@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated challenge artifacts
+output/
+demo_color/
+tmp_codec_*.mp4
+
+# Generated Labtainer package output
+labtainer/build/
