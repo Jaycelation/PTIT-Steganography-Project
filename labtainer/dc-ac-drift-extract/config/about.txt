@@ -1,0 +1,1 @@
+Extract an educational flag from a frame-DCT video steganography challenge that combines DC header bits and AC payload bits.

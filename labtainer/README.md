@@ -1,6 +1,44 @@
 # Labtainer Build Prep
 
-This directory contains a first-pass Labtainer scaffold for packaging the steganography challenges as a single-container lab.
+This directory contains Labtainer scaffolds for packaging the steganography challenges as safe, single-container educational labs.
+
+The current primary first-pass lab is:
+
+```text
+dc-ac-drift-extract
+```
+
+It is based on `dc-ac-combined`, adds drift-compensation context, and has five deterministic checkwork items.
+
+## Build `dc-ac-drift-extract`
+
+Run from the repository root:
+
+```bash
+python scripts/prepare_labtainer_public.py
+python scripts/run_all_lab_checks.py
+```
+
+The script creates:
+
+```text
+labtainer/build/dc-ac-drift-extract/
+```
+
+Copy that generated `dc-ac-drift-extract` directory into the Labtainers `labs/` directory, then rebuild from `scripts/labtainers-student`:
+
+```bash
+rebuild dc-ac-drift-extract
+labtainer dc-ac-drift-extract
+```
+
+Student work happens from:
+
+```text
+/home/student/dc-ac-drift-extract
+```
+
+## Legacy All-Challenge Scaffold
 
 The scaffold follows the common Labtainers layout:
 
