@@ -10,6 +10,11 @@ dc-ac-drift-extract
 
 It is based on `dc-ac-combined`, adds drift-compensation context, and has five deterministic checkwork items.
 
+Additional independent Labtainer-ready labs:
+
+- `dc-ac-combined-extract`: Tách tin trong video miền hệ số bằng kết hợp hệ số DC và AC.
+- `ac-midband-extract`: Tách tin trong video miền hệ số bằng hệ số AC.
+
 ## Build `dc-ac-drift-extract`
 
 Run from the repository root:
@@ -23,6 +28,8 @@ The script creates:
 
 ```text
 labtainer/build/dc-ac-drift-extract/
+labtainer/build/dc-ac-combined-extract/
+labtainer/build/ac-midband-extract/
 ```
 
 Copy that generated `dc-ac-drift-extract` directory into the Labtainers `labs/` directory, then rebuild from `scripts/labtainers-student`:

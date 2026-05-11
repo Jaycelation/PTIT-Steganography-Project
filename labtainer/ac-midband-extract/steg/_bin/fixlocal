@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+
+chmod +x /home/student/ac-midband-extract/tools/*.py 2>/dev/null || true
+chown -R student:student /home/student/ac-midband-extract 2>/dev/null || true

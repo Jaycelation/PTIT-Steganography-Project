@@ -17,6 +17,8 @@ Chỉ giữ các challenge liên quan trực tiếp đến DC, AC, DC+AC và dri
 | `dc-ac-combined` | Ready with cleanup | Header ở DC, payload ở AC. |
 | `drift-compensation-basic` | Ready with cleanup | Mô phỏng drift và cân bằng độ lệch. |
 | `dc-ac-drift-extract` | Labtainer-ready first pass | Lab chính dựa trên `dc-ac-combined`, có context drift và checkwork ổn định. |
+| `dc-ac-combined-extract` | Labtainer-ready | Lab tách tin bằng kết hợp hệ số DC và AC. |
+| `ac-midband-extract` | Labtainer-ready | Lab tách tin bằng hệ số AC trung tần. |
 
 ## Verification Performed
 

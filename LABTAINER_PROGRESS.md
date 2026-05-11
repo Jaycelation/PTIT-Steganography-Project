@@ -41,6 +41,13 @@ Topic: coefficient-domain video steganography using DC/AC coefficient modificati
 - [x] Added reusable package script: `scripts/prepare_labtainer_public.py`.
 - [x] Added local verification script: `scripts/run_all_lab_checks.py`.
 
+## Additional Labtainer Labs
+
+- [x] Created `dc-ac-combined-extract` from `dc-ac-combined`.
+- [x] Created `ac-midband-extract` from `ac-coeff-midband`.
+- [x] Reused file-based marker/checkwork pattern from `dc-ac-drift-extract`.
+- [x] Kept each lab independent with its own config, Dockerfile, instructions, tools, and instructor notes.
+
 ## Checkwork Items
 
 - [x] `video_metadata_checked`: checks `work/video_metadata.txt` for `VIDEO_METADATA_OK`.
@@ -48,6 +55,24 @@ Topic: coefficient-domain video steganography using DC/AC coefficient modificati
 - [x] `answer_file_created`: checks `work/answer_status.txt` for `ANSWER_FILE_CREATED`.
 - [x] `flag_recovered`: checks `work/answer.sha256` for the instructor-only expected hash.
 - [x] `metrics_reported`: checks `work/metrics.json` for `METRICS_OK`.
+
+## New Lab Checkwork
+
+`dc-ac-combined-extract`:
+
+- [x] `video_metadata_checked`
+- [x] `dc_header_checked`
+- [x] `ac_payload_extracted`
+- [x] `answer_file_created`
+- [x] `flag_recovered`
+
+`ac-midband-extract`:
+
+- [x] `video_metadata_checked`
+- [x] `ac_config_checked`
+- [x] `ac_extractor_ran`
+- [x] `answer_file_created`
+- [x] `flag_recovered`
 
 ## Verification
 

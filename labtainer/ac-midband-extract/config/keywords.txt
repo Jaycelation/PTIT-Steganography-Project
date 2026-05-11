@@ -1,0 +1,8 @@
+steganography
+video
+dct
+ac
+midband
+coefficients
+ctf
+python

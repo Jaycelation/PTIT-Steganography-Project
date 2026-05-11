@@ -1,0 +1,8 @@
+steganography
+video
+dct
+dc
+ac
+coefficients
+ctf
+python
