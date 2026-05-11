@@ -1,6 +1,6 @@
 # Labtainer Build Prep
 
-This directory contains Labtainer scaffolds for packaging the steganography challenges as safe, single-container educational labs.
+This directory contains Labtainer scaffolds for packaging the core DC/AC and drift-compensation steganography challenges as safe, single-container educational labs.
 
 The current primary first-pass lab is:
 
@@ -38,7 +38,7 @@ Student work happens from:
 /home/student/dc-ac-drift-extract
 ```
 
-## Legacy All-Challenge Scaffold
+## Legacy Core-Challenge Scaffold
 
 The scaffold follows the common Labtainers layout:
 
@@ -64,6 +64,13 @@ The script creates:
 labtainer/build/steg-video-labs/
 ```
 
+This package includes only the four core challenges:
+
+- `dc-coeff-warmup`
+- `ac-coeff-midband`
+- `dc-ac-combined`
+- `drift-compensation-basic`
+
 Copy that generated `steg-video-labs` directory into the Labtainers `labs/` directory, then rebuild from `scripts/labtainers-student`:
 
 ```bash
@@ -74,5 +81,5 @@ labtainer steg-video-labs
 Notes:
 
 - The package intentionally excludes `private/`, `private_config.json`, `answer.txt`, `demo_color/`, `__pycache__/`, and generated build output.
-- The Dockerfile installs `ffmpeg` so `robust-dc-ac-after-reencode` can exercise the intended re-encode path.
+- Archived advanced modules are not copied into student packages.
 - Student work should happen from `/home/student/steg-video-labs`.

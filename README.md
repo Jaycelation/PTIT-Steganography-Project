@@ -1,24 +1,31 @@
 # Coefficient-Domain Video Steganography Challenges
 
-Bộ local CTF challenge về giấu tin trong video miền hệ số bằng sửa đổi hệ số DC/AC và mô phỏng cân bằng độ lệch.
+Bộ bài lab/CTF local cho đề tài:
 
-Lưu ý quan trọng:
-- Tất cả challenge trong repo này là mô phỏng frame-DCT local bằng Python.
-- Đây không phải triển khai codec-level MPEG thật trên bitstream VLD/RLD/RLC/VLC.
-- Không có payload tự thực thi, exploit media player, autorun hoặc hành vi độc hại.
+> Giấu tin trong video miền hệ số bằng kỹ thuật sửa đổi hệ số DC và AC với hệ số cân bằng độ lệch (4.3).
 
-## Challenge
+Lưu ý an toàn:
+
+- Tất cả challenge trong scope chính là mô phỏng frame-DCT local bằng Python.
+- Đây không phải triển khai codec-level MPEG thật trên bitstream nén của codec.
+- Không có payload tự thực thi, exploit media player, autorun MP4 hoặc hành vi độc hại.
+
+## Scope Chính
 
 | Challenge | Độ khó | Trọng tâm |
 |---|---:|---|
 | `dc-coeff-warmup` | Easy | Sửa hệ số DC |
 | `ac-coeff-midband` | Easy/Medium | Sửa hệ số AC trung tần |
 | `dc-ac-combined` | Medium | Header ở DC, payload ở AC |
-| `drift-compensation-basic` | Medium/Hard | Mô phỏng drift và bù drift |
-| `vlc-size-aware-embedding` | Hard | Ràng buộc kích thước VLC giả lập |
-| `robust-dc-ac-after-reencode` | Hard | Repetition, majority vote sau re-encode |
+| `drift-compensation-basic` | Medium/Hard | Mô phỏng drift và cân bằng độ lệch |
 
-## Chạy nhanh
+Labtainer-ready lab hiện tại:
+
+| Lab | Nền tảng | Trạng thái |
+|---|---|---|
+| `dc-ac-drift-extract` | `dc-ac-combined` + ngữ cảnh drift compensation | Ready first pass |
+
+## Chạy Nhanh
 
 ```powershell
 cd dc-coeff-warmup
@@ -29,6 +36,23 @@ python checker.py --answer-file output/answer.txt
 
 Kỳ vọng: `PASS`.
 
+## Labtainer
+
+Build student package cho lab chính:
+
+```powershell
+python scripts\prepare_labtainer_public.py
+python scripts\run_all_lab_checks.py
+```
+
+Package được tạo tại:
+
+```text
+labtainer/build/dc-ac-drift-extract/
+```
+
+Student package không chứa `generate.py`, `checker.py`, `private/`, `private_config.json`, hoặc answer key.
+
 ## Demo Với Video Thật
 
-Repo có thể dùng `videos/Video_Demo1.mp4` làm nguồn demo. Xem [DEMO.md](DEMO.md) để chạy lại toàn bộ demo bằng video này.
+Repo có thể dùng `videos/Video_Demo1.mp4` làm nguồn demo cho 4 challenge core. Xem [DEMO.md](DEMO.md).

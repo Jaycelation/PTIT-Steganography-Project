@@ -11,7 +11,7 @@ Topic: coefficient-domain video steganography using DC/AC coefficient modificati
 ## Repository Review
 
 - [x] Inspected repository tree.
-- [x] Identified six standalone challenges.
+- [x] Identified six standalone challenges and narrowed the main scope to four core challenges.
 - [x] Read root `README.md`.
 - [x] Read `LABTAINER_READINESS.md`.
 - [x] Read `DEMO.md`.
@@ -63,7 +63,7 @@ Topic: coefficient-domain video steganography using DC/AC coefficient modificati
 - [ ] Convert `drift-compensation-basic` into a full second lab with actual drift comparison goals.
 - [ ] Convert `dc-coeff-warmup` as an introductory lab.
 - [ ] Convert `ac-coeff-midband` as the midband AC lab.
-- [ ] Convert `vlc-size-aware-embedding` as an advanced size-aware modeling lab.
-- [ ] Convert `robust-dc-ac-after-reencode` as the re-encode robustness lab.
+- [x] Move advanced modules out of main scope.
+- [x] Keep archived advanced challenges out of Labtainer student packages.
 - [ ] Fix mojibake in existing Vietnamese Markdown files.
 - [ ] Remove already tracked generated outputs and private artifacts from git index in a cleanup commit.

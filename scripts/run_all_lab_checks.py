@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -47,6 +48,9 @@ def main() -> None:
     for item in required:
         if not item.exists() or not item.read_text(encoding="utf-8").strip():
             raise SystemExit(f"Missing or empty checkwork artifact: {item}")
+
+    for cache_dir in package_root.rglob("__pycache__"):
+        shutil.rmtree(cache_dir)
 
     forbidden_patterns = [
         "generate.py",

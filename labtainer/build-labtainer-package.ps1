@@ -13,9 +13,7 @@ $challenges = @(
     "dc-coeff-warmup",
     "ac-coeff-midband",
     "dc-ac-combined",
-    "drift-compensation-basic",
-    "vlc-size-aware-embedding",
-    "robust-dc-ac-after-reencode"
+    "drift-compensation-basic"
 )
 
 if (Test-Path $outRoot) {

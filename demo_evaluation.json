@@ -51,28 +51,6 @@
       "sampled_psnr_db": 34.87138504835361,
       "mean_saturation_delta": 1.7011560812114197,
       "sharpness_ratio_vs_source": 0.9760517754839081
-    },
-    {
-      "challenge": "vlc-size-aware-embedding",
-      "path": "vlc-size-aware-embedding\\demo_color\\stego.mp4",
-      "resolution": "1920x1080",
-      "resolution_vs_source": 1.0,
-      "size_mb": 30.44953441619873,
-      "size_vs_source": 2.3145346229646475,
-      "sampled_psnr_db": 34.89199073401185,
-      "mean_saturation_delta": 1.6839840133101855,
-      "sharpness_ratio_vs_source": 0.9749022658944967
-    },
-    {
-      "challenge": "robust-dc-ac-after-reencode",
-      "path": "robust-dc-ac-after-reencode\\demo_color\\stego_reencoded.mp4",
-      "resolution": "1920x1080",
-      "resolution_vs_source": 1.0,
-      "size_mb": 30.45352077484131,
-      "size_vs_source": 2.3148376346616963,
-      "sampled_psnr_db": 34.89080456734781,
-      "mean_saturation_delta": 1.6841103234310708,
-      "sharpness_ratio_vs_source": 0.9749146927567249
     }
   ]
 }
