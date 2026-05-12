@@ -30,6 +30,9 @@ RUN useradd -ms /bin/bash $user_name \
     && echo "$user_name:$password" | chpasswd \
     && adduser $user_name sudo
 
+RUN mkdir -p /home/$user_name/.local/bin /home/$user_name/.local/result \
+    && chown -R $user_name:$user_name /home/$user_name/.local /home/$user_name
+
 USER $user_name
 ENV HOME /home/$user_name
 ADD $labdir/$lab.tar.gz $HOME

@@ -91,6 +91,54 @@ def remove_forbidden_files(out_root: Path) -> None:
             path.unlink()
 
 
+def normalize_tar_info(tarinfo: tarfile.TarInfo) -> tarfile.TarInfo:
+    tarinfo.uid = 0
+    tarinfo.gid = 0
+    tarinfo.uname = ""
+    tarinfo.gname = ""
+    if tarinfo.isdir():
+        tarinfo.mode = 0o755
+    elif "/_bin/" in f"/{tarinfo.name}" or tarinfo.name.endswith(".sh"):
+        tarinfo.mode = 0o755
+    else:
+        tarinfo.mode = 0o644
+    return tarinfo
+
+
+def create_home_tar(lab_root: Path, lab_name: str) -> Path:
+    steg_root = lab_root / CONTAINER_NAME
+    tar_path = steg_root / f"{lab_name}.steg.student.tar.gz"
+    if tar_path.exists():
+        tar_path.unlink()
+
+    required = [
+        steg_root / "_bin",
+        steg_root / "instructions.txt",
+        steg_root / lab_name,
+    ]
+    for path in required:
+        if not path.exists():
+            raise FileNotFoundError(f"Required home tar entry is missing: {path}")
+
+    with tarfile.open(tar_path, "w:gz") as tar:
+        for path in required:
+            tar.add(path, arcname=path.name, filter=normalize_tar_info)
+
+    return tar_path
+
+
+def create_sys_tar(lab_root: Path, lab_name: str) -> Path:
+    steg_root = lab_root / CONTAINER_NAME
+    tar_path = steg_root / f"sys_{lab_name}.steg.student.tar.gz"
+    if tar_path.exists():
+        tar_path.unlink()
+
+    with tarfile.open(tar_path, "w:gz"):
+        pass
+
+    return tar_path
+
+
 def build_lab(config: LabConfig, output_root: Path) -> None:
     template_root = REPO_ROOT / "labtainer" / config.lab_name
     if not template_root.exists():
@@ -107,6 +155,8 @@ def build_lab(config: LabConfig, output_root: Path) -> None:
 
     copy_student_challenge(config, workspace)
     remove_forbidden_files(output_root)
+    create_home_tar(output_root, config.lab_name)
+    create_sys_tar(output_root, config.lab_name)
 
 
 def create_lab_tar(lab_root: Path, tar_root: Path) -> Path:

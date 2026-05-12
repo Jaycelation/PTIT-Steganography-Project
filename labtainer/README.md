@@ -24,6 +24,8 @@ python scripts/prepare_labtainer_public.py
 python scripts/run_all_lab_checks.py
 ```
 
+See `../README_LABTAINER_VM.md` for Labtainer VM import commands and DockerHub image build commands for all three extract labs.
+
 The script creates:
 
 ```text
