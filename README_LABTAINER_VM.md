@@ -7,8 +7,6 @@ Run these commands inside the Labtainer VM from the Labtainer student directory.
 ```bash
 cd ~/labtainer/labtainer-student
 imodule https://github.com/Jaycelation/PTIT-Steganography-Project/raw/refs/heads/master/labtainer/ac-midband-extract.tar
-docker pull jaycedang/ac-midband-extract-steg-student:latest
-docker tag jaycedang/ac-midband-extract-steg-student:latest ac-midband-extract.steg.student
 labtainer -r ac-midband-extract
 ```
 
@@ -17,8 +15,6 @@ labtainer -r ac-midband-extract
 ```bash
 cd ~/labtainer/labtainer-student
 imodule https://github.com/Jaycelation/PTIT-Steganography-Project/raw/refs/heads/master/labtainer/dc-ac-combined-extract.tar
-docker pull jaycedang/dc-ac-combined-extract-steg-student:latest
-docker tag jaycedang/dc-ac-combined-extract-steg-student:latest dc-ac-combined-extract.steg.student
 labtainer -r dc-ac-combined-extract
 ```
 
@@ -27,8 +23,6 @@ labtainer -r dc-ac-combined-extract
 ```bash
 cd ~/labtainer/labtainer-student
 imodule https://github.com/Jaycelation/PTIT-Steganography-Project/raw/refs/heads/master/labtainer/dc-ac-drift-extract.tar
-docker pull jaycedang/dc-ac-drift-extract-steg-student:latest
-docker tag jaycedang/dc-ac-drift-extract-steg-student:latest dc-ac-drift-extract.steg.student
 labtainer -r dc-ac-drift-extract
 ```
 
@@ -49,6 +43,7 @@ docker build \
   --build-arg user_name=student \
   --build-arg password=student \
   --build-arg apt_source= \
+  -t jaycedang/ac-midband-extract.steg.student:latest \
   -t jaycedang/ac-midband-extract-steg-student:latest \
   .
 ```
@@ -66,6 +61,7 @@ docker build \
   --build-arg user_name=student \
   --build-arg password=student \
   --build-arg apt_source= \
+  -t jaycedang/dc-ac-combined-extract.steg.student:latest \
   -t jaycedang/dc-ac-combined-extract-steg-student:latest \
   .
 ```
@@ -83,6 +79,7 @@ docker build \
   --build-arg user_name=student \
   --build-arg password=student \
   --build-arg apt_source= \
+  -t jaycedang/dc-ac-drift-extract.steg.student:latest \
   -t jaycedang/dc-ac-drift-extract-steg-student:latest \
   .
 ```
