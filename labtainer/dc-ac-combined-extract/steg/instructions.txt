@@ -1,17 +1,14 @@
 dc-ac-combined-extract
 
-Tên bài: Tách tin trong video miền hệ số bằng kết hợp hệ số DC và AC
-
 Workspace:
   /home/student/dc-ac-combined-extract
 
-Suggested command sequence:
-  cd /home/student/dc-ac-combined-extract
+Required commands:
   python3 tools/check_video_metadata.py
   python3 tools/check_dc_header.py
   python3 tools/run_dc_ac_extract.py
 
-Optional metrics:
+Optional:
   python3 tools/report_metrics.py
 
-This lab uses safe educational flags only. It does not include malicious media, autorun behavior, exploit payloads, or media-player vulnerability code.
+The terminal should already open in the workspace.

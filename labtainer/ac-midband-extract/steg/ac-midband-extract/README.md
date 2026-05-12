@@ -1,44 +1,30 @@
-# Tách tin trong video miền hệ số bằng hệ số AC
+# AC Midband Extract
 
-Lab này dựa trên challenge `ac-coeff-midband`.
-
-Bạn được cung cấp một stego video và public config/hint. Payload được nhúng trong hệ số AC trung tần của block DCT 8x8.
-
-Đây là mô phỏng frame-DCT local bằng Python, không phải sửa bitstream codec-level.
+Recover a hidden message from a public stego MP4. The payload is embedded in selected midband AC coefficients from 8x8 DCT blocks. This is a local frame-DCT teaching lab, not codec bitstream editing.
 
 ## Files
 
-- `output/stego.mp4`: video stego public.
-- `output/public_config.json`: tham số public cho extractor.
-- `output/hint.txt`: hint public.
-- `solve.py`: extractor gốc.
-- `src/`: code DCT, video I/O và extraction.
-- `tools/`: helper tạo marker checkwork.
-- `work/`: sinh ra khi chạy bài.
+- `output/stego.mp4`: public stego video.
+- `output/public_config.json`: public extraction parameters.
+- `output/hint.txt`: public hint.
+- `solve.py`: reference extractor entry point.
+- `src/`: DCT, video I/O, extraction, and metrics helpers.
+- `tools/`: commands used by Labtainer checkwork.
 
-## Lệnh Chạy
+## Required Commands
+
+Run from this directory:
 
 ```bash
-cd ~/ac-midband-extract
 python3 tools/check_video_metadata.py
 python3 tools/check_ac_config.py
 python3 tools/run_ac_extract.py
 ```
 
-Tuỳ chọn:
+Optional metrics:
 
 ```bash
 python3 tools/report_metrics.py
 ```
 
-## Output Mong Đợi
-
-- `work/video_metadata.txt`
-- `work/ac_config.txt`
-- `work/extract.log`
-- `work/answer.txt`
-- `work/answer_status.txt`
-- `work/answer.sha256`
-- `work/metrics.json`
-
-Flag đúng không được công bố trong README. Checkwork kiểm tra hash của answer.
+The recovered answer is written under `work/` when you run the commands. Labtainer checkwork validates the answer hash.

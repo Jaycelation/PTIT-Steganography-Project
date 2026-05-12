@@ -1,17 +1,14 @@
 ac-midband-extract
 
-Tên bài: Tách tin trong video miền hệ số bằng hệ số AC
-
 Workspace:
   /home/student/ac-midband-extract
 
-Suggested command sequence:
-  cd /home/student/ac-midband-extract
+Required commands:
   python3 tools/check_video_metadata.py
   python3 tools/check_ac_config.py
   python3 tools/run_ac_extract.py
 
-Optional metrics:
+Optional:
   python3 tools/report_metrics.py
 
-This lab uses safe educational flags only. It does not include malicious media, autorun behavior, exploit payloads, or media-player vulnerability code.
+The terminal should already open in the workspace.

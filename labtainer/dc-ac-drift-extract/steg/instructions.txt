@@ -3,10 +3,9 @@ dc-ac-drift-extract
 Workspace:
   /home/student/dc-ac-drift-extract
 
-Suggested command sequence:
-  cd /home/student/dc-ac-drift-extract
+Required commands:
   python3 tools/check_video_metadata.py
   python3 tools/run_dc_ac_extract.py
   python3 tools/report_metrics.py
 
-The lab uses safe educational flags only. It does not include malicious media, autorun behavior, exploit payloads, or media-player vulnerability code.
+The terminal should already open in the workspace.
