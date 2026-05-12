@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
 
+install -d -m 0755 -o student -g student /home/student/.local /home/student/.local/bin /home/student/.local/result
 chmod +x /home/student/ac-midband-extract/tools/*.py 2>/dev/null || true
-chown -R student:student /home/student/ac-midband-extract 2>/dev/null || true
+chown -R student:student /home/student/ac-midband-extract /home/student/.local 2>/dev/null || true

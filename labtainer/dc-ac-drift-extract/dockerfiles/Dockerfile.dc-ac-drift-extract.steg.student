@@ -26,18 +26,26 @@ RUN apt-get update \
 
 ADD $labdir/sys_$lab.tar.gz /
 
-RUN useradd -ms /bin/bash $user_name \
+RUN id -u $user_name >/dev/null 2>&1 || useradd -ms /bin/bash $user_name \
     && echo "$user_name:$password" | chpasswd \
     && adduser $user_name sudo
 
-RUN mkdir -p /home/$user_name/.local/bin /home/$user_name/.local/result \
-    && chown -R $user_name:$user_name /home/$user_name/.local /home/$user_name
+RUN install -d -m 0755 -o $user_name -g $user_name \
+        /home/$user_name/.local \
+        /home/$user_name/.local/bin \
+        /home/$user_name/.local/result
 
 USER $user_name
 ENV HOME /home/$user_name
 ADD $labdir/$lab.tar.gz $HOME
 
 USER root
+RUN install -d -m 0755 -o $user_name -g $user_name \
+        /home/$user_name/.local \
+        /home/$user_name/.local/bin \
+        /home/$user_name/.local/result \
+    && chown -R $user_name:$user_name /home/$user_name
+
 RUN python3 -m pip install --no-cache-dir \
         numpy \
         opencv-python-headless \
