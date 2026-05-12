@@ -11,7 +11,7 @@ ARG user_name
 ARG password
 ARG apt_source
 ARG version
-LABEL version=$version
+LABEL version=$version base="labtainers/labtainer.base2.739eee77f8d3"
 
 ENV APT_SOURCE $apt_source
 RUN /usr/bin/apt-source.sh
