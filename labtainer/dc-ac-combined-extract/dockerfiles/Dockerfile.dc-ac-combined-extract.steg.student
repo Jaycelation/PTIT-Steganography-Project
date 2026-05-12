@@ -2,13 +2,16 @@
 # Labtainer Dockerfile for dc-ac-combined-extract
 #
 ARG registry
-FROM $registry/labtainer.base
+FROM $registry/labtainer.base2
 
 ARG lab
 ARG labdir
 ARG imagedir
 ARG user_name
+ARG password
 ARG apt_source
+ARG version
+LABEL version=$version
 
 ENV APT_SOURCE $apt_source
 RUN /usr/bin/apt-source.sh
@@ -24,7 +27,7 @@ RUN apt-get update \
 ADD $labdir/sys_$lab.tar.gz /
 
 RUN useradd -ms /bin/bash $user_name \
-    && echo "$user_name:$user_name" | chpasswd \
+    && echo "$user_name:$password" | chpasswd \
     && adduser $user_name sudo
 
 USER $user_name
