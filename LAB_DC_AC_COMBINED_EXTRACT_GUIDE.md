@@ -21,7 +21,18 @@ Sau khi hoàn thành bài lab, sinh viên có thể:
 - Chạy pipeline trích xuất kết hợp DC/AC.
 - Tạo đầy đủ file kết quả để Labtainer `checkwork` đánh giá.
 
-## 3. Khởi Động Lab
+## 3. Yêu Cầu
+
+Sinh viên cần chuẩn bị:
+
+- Máy ảo Labtainer hoạt động bình thường.
+- Kết nối Internet để tải lab bằng `imodule`.
+- Biết thao tác trong terminal Linux.
+- Biết chạy script Python bằng `python3`.
+- Đã hiểu ý nghĩa cơ bản của thư mục `output/`, `tools/` và `work/`.
+- Không chỉnh sửa file `output/stego.mp4`.
+
+## 4. Tải Và Khởi Động Lab
 
 Trong máy ảo Labtainer, mở terminal và chuyển vào thư mục Labtainer student:
 
@@ -53,7 +64,7 @@ Nếu cần kiểm tra lại vị trí hiện tại:
 pwd
 ```
 
-## 4. Cấu Trúc File
+### Cấu Trúc File Trong Lab
 
 Các file chính trong lab:
 
@@ -218,7 +229,7 @@ cat work/metrics.json
 
 File metrics có các thông tin như kích thước video, số frame, `dc_step`, `ac_step`, độ dài header, độ dài flag và ước lượng dung lượng nhúng trên miền AC.
 
-## 6. Kiểm Tra Bài Làm
+## 6. Kiểm Tra Kết Quả
 
 Sau khi hoàn thành các task bắt buộc, quay lại terminal Labtainer bên ngoài và chạy:
 
@@ -236,7 +247,7 @@ Labtainer sẽ kiểm tra các mục:
 | File answer | `work/answer_status.txt` | `ANSWER_FILE_CREATED` |
 | Hash flag | `work/answer.sha256` | Hash khớp đáp án |
 
-## 7. Kết Thúc Lab
+### Kết Thúc Lab
 
 Kết thúc lab:
 
@@ -252,7 +263,7 @@ labtainer -r dc-ac-combined-extract
 
 Lưu ý: tùy chọn `-r` sẽ reset trạng thái làm bài hiện tại.
 
-## 8. Ghi Chú
+### Ghi Chú
 
 - Không chỉnh sửa file `output/stego.mp4`.
 - Header DC chỉ dùng để đồng bộ và xác nhận đường trích xuất.

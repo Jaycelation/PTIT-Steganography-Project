@@ -16,7 +16,17 @@ Sau khi hoàn thành bài lab, sinh viên có thể:
 - Chạy pipeline trích xuất thông điệp từ video stego.
 - Tạo các file kết quả để Labtainer `checkwork` kiểm tra.
 
-## 3. Khởi Động Lab
+## 3. Yêu Cầu
+
+Sinh viên cần chuẩn bị:
+
+- Máy ảo Labtainer đã cài đặt và chạy được terminal.
+- Kết nối Internet để tải lab bằng `imodule`.
+- Kiến thức Linux cơ bản: `cd`, `pwd`, `cat`, chạy lệnh Python.
+- Biết cách quan sát file output trong thư mục `work/`.
+- Không chỉnh sửa file `output/stego.mp4` hoặc các file đáp án của Labtainer.
+
+## 4. Tải Và Khởi Động Lab
 
 Trong máy ảo Labtainer, mở terminal và chuyển vào thư mục Labtainer student:
 
@@ -48,7 +58,7 @@ Nếu cần kiểm tra lại vị trí hiện tại:
 pwd
 ```
 
-## 4. Cấu Trúc File
+### Cấu Trúc File Trong Lab
 
 Các file chính trong lab:
 
@@ -207,7 +217,7 @@ cat work/metrics.json
 
 File metrics có các thông tin như kích thước video, số frame, `q_step`, độ dài flag và ước lượng dung lượng nhúng trên miền AC.
 
-## 6. Kiểm Tra Bài Làm
+## 6. Kiểm Tra Kết Quả
 
 Sau khi hoàn thành các task bắt buộc, quay lại terminal Labtainer bên ngoài và chạy:
 
@@ -225,7 +235,7 @@ Labtainer sẽ kiểm tra các mục:
 | File answer | `work/answer_status.txt` | `ANSWER_FILE_CREATED` |
 | Hash flag | `work/answer.sha256` | Hash khớp đáp án |
 
-## 7. Kết Thúc Lab
+### Kết Thúc Lab
 
 Kết thúc lab:
 
@@ -241,7 +251,7 @@ labtainer -r ac-midband-extract
 
 Lưu ý: tùy chọn `-r` sẽ reset trạng thái làm bài hiện tại.
 
-## 8. Ghi Chú
+### Ghi Chú
 
 - Không chỉnh sửa file `output/stego.mp4`.
 - Không cần biết đáp án trước; `checkwork` dùng hash để xác minh.

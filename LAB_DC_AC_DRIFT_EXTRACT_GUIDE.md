@@ -22,7 +22,18 @@ Sau khi hoàn thành bài lab, sinh viên có thể:
 - Ghi lại metrics công khai của video và cấu hình trích xuất.
 - Hiểu vai trò của metrics khi đánh giá drift và độ tin cậy trong video steganography.
 
-## 3. Khởi Động Lab
+## 3. Yêu Cầu
+
+Sinh viên cần chuẩn bị:
+
+- Máy ảo Labtainer đã sẵn sàng.
+- Kết nối Internet để tải lab bằng `imodule`.
+- Kỹ năng terminal Linux cơ bản.
+- Biết chạy script Python và đọc file JSON đơn giản.
+- Thực hiện đủ các task theo thứ tự, vì metrics là một phần của kết quả chấm.
+- Không chỉnh sửa file `output/stego.mp4`.
+
+## 4. Tải Và Khởi Động Lab
 
 Trong máy ảo Labtainer, mở terminal và chuyển vào thư mục Labtainer student:
 
@@ -54,7 +65,7 @@ Nếu cần kiểm tra lại vị trí hiện tại:
 pwd
 ```
 
-## 4. Cấu Trúc File
+### Cấu Trúc File Trong Lab
 
 Các file chính trong lab:
 
@@ -192,7 +203,7 @@ Các trường quan trọng trong file metrics:
 - `estimated_ac_capacity_bits`: ước lượng dung lượng nhúng trên miền AC.
 - `drift_compensation_note`: ghi chú về phạm vi drift compensation.
 
-## 6. Kiểm Tra Bài Làm
+## 6. Kiểm Tra Kết Quả
 
 Sau khi hoàn thành các task bắt buộc, quay lại terminal Labtainer bên ngoài và chạy:
 
@@ -210,7 +221,7 @@ Labtainer sẽ kiểm tra các mục:
 | Hash flag | `work/answer.sha256` | Hash khớp đáp án |
 | Metrics | `work/metrics.json` | `METRICS_OK` |
 
-## 7. Kết Thúc Lab
+### Kết Thúc Lab
 
 Kết thúc lab:
 
@@ -226,7 +237,7 @@ labtainer -r dc-ac-drift-extract
 
 Lưu ý: tùy chọn `-r` sẽ reset trạng thái làm bài hiện tại.
 
-## 8. Ghi Chú
+### Ghi Chú
 
 - Không chỉnh sửa file `output/stego.mp4`.
 - Bài lab này bắt buộc chạy `tools/report_metrics.py`, vì metrics là một phần của checkwork.
