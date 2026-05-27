@@ -1,0 +1,17 @@
+dc-ac-bruteforce-extract
+
+Workspace:
+  /home/student/dc-ac-bruteforce-extract
+
+Required commands:
+  python3 tools/check_video_metadata.py
+  python3 tools/audit_public_config.py
+  python3 tools/build_candidate_space.py
+  python3 tools/probe_dc_sync.py
+  python3 tools/run_bruteforce.py
+  python3 tools/run_bruteforce_extract.py
+
+Optional:
+  python3 tools/report_metrics.py
+
+The terminal should already open in the workspace.

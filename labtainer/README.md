@@ -14,6 +14,7 @@ Additional independent Labtainer-ready labs:
 
 - `dc-ac-combined-extract`: Tách tin trong video miền hệ số bằng kết hợp hệ số DC và AC.
 - `ac-midband-extract`: Tách tin trong video miền hệ số bằng hệ số AC.
+- `dc-ac-bruteforce-extract`: Brute-force seed và profile hệ số AC bị ẩn để khôi phục payload DC/AC.
 
 ## Build `dc-ac-drift-extract`
 
@@ -24,7 +25,7 @@ python scripts/prepare_labtainer_public.py
 python scripts/run_all_lab_checks.py
 ```
 
-See `../README_LABTAINER_VM.md` for Labtainer VM import commands and DockerHub image build commands for all three extract labs.
+See `../README_LABTAINER_VM.md` for Labtainer VM import commands and DockerHub image build commands for the extract labs.
 
 The script creates:
 
@@ -32,6 +33,7 @@ The script creates:
 labtainer/build/dc-ac-drift-extract/
 labtainer/build/dc-ac-combined-extract/
 labtainer/build/ac-midband-extract/
+labtainer/build/dc-ac-bruteforce-extract/
 ```
 
 Copy that generated `dc-ac-drift-extract` directory into the Labtainers `labs/` directory, then rebuild from `scripts/labtainers-student`:

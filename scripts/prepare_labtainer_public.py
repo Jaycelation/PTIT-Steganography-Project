@@ -21,6 +21,7 @@ LABS = {
     "dc-ac-drift-extract": LabConfig("dc-ac-drift-extract", "dc-ac-combined"),
     "dc-ac-combined-extract": LabConfig("dc-ac-combined-extract", "dc-ac-combined"),
     "ac-midband-extract": LabConfig("ac-midband-extract", "ac-coeff-midband"),
+    "dc-ac-bruteforce-extract": LabConfig("dc-ac-bruteforce-extract", "dc-ac-bruteforce"),
 }
 
 

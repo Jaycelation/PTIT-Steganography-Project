@@ -7,5 +7,12 @@ output/
 demo_color/
 tmp_codec_*.mp4
 
+# Public artifacts required to rebuild the brute-force Labtainer lab
+!dc-ac-bruteforce/output/
+!dc-ac-bruteforce/output/public_config.json
+!dc-ac-bruteforce/output/stego.mp4
+dc-ac-bruteforce/output/private/
+dc-ac-bruteforce/output/private_config.json
+
 # Generated Labtainer package output
 labtainer/build/

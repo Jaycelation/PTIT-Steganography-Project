@@ -26,6 +26,14 @@ imodule https://github.com/Jaycelation/PTIT-Steganography-Project/raw/refs/heads
 labtainer -r dc-ac-drift-extract
 ```
 
+## dc-ac-bruteforce-extract
+
+```bash
+cd ~/labtainer/labtainer-student
+imodule https://github.com/Jaycelation/PTIT-Steganography-Project/raw/refs/heads/master/labtainer/dc-ac-bruteforce-extract.tar
+labtainer -r dc-ac-bruteforce-extract
+```
+
 ## DockerHub Build Commands
 
 Run from the repository root after regenerating Labtainer packages.
@@ -81,6 +89,24 @@ docker build \
   --build-arg apt_source= \
   -t jaycedang/dc-ac-drift-extract.steg.student:latest \
   -t jaycedang/dc-ac-drift-extract-steg-student:latest \
+  .
+```
+
+### dc-ac-bruteforce-extract
+
+```bash
+cd labtainer/build/dc-ac-bruteforce-extract
+docker build \
+  -f dockerfiles/Dockerfile.dc-ac-bruteforce-extract.steg.student \
+  --build-arg registry=labtainers \
+  --build-arg lab=dc-ac-bruteforce-extract.steg.student \
+  --build-arg labdir=steg \
+  --build-arg imagedir=steg \
+  --build-arg user_name=student \
+  --build-arg password=student \
+  --build-arg apt_source= \
+  -t jaycedang/dc-ac-bruteforce-extract.steg.student:latest \
+  -t jaycedang/dc-ac-bruteforce-extract-steg-student:latest \
   .
 ```
 

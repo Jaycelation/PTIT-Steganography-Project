@@ -15,6 +15,7 @@ Lưu ý phạm vi:
 | `ac-midband-extract` | Trích xuất thông điệp từ hệ số AC trung tần. | [LAB_AC_MIDBAND_EXTRACT_GUIDE.md](LAB_AC_MIDBAND_EXTRACT_GUIDE.md) |
 | `dc-ac-combined-extract` | Trích xuất thông điệp bằng pipeline kết hợp header DC và payload AC. | [LAB_DC_AC_COMBINED_EXTRACT_GUIDE.md](LAB_DC_AC_COMBINED_EXTRACT_GUIDE.md) |
 | `dc-ac-drift-extract` | Trích xuất DC/AC và ghi metrics phục vụ phân tích drift. | [LAB_DC_AC_DRIFT_EXTRACT_GUIDE.md](LAB_DC_AC_DRIFT_EXTRACT_GUIDE.md) |
+| `dc-ac-bruteforce-extract` | Brute-force seed và profile hệ số AC bị ẩn để khôi phục payload DC/AC. | [labtainer/dc-ac-bruteforce-extract/steg/dc-ac-bruteforce-extract/README.md](labtainer/dc-ac-bruteforce-extract/steg/dc-ac-bruteforce-extract/README.md) |
 
 Các gói Labtainer public đã có sẵn trong thư mục:
 
@@ -22,6 +23,7 @@ Các gói Labtainer public đã có sẵn trong thư mục:
 labtainer/ac-midband-extract.tar
 labtainer/dc-ac-combined-extract.tar
 labtainer/dc-ac-drift-extract.tar
+labtainer/dc-ac-bruteforce-extract.tar
 ```
 
 ## 2. Tải Và Chạy Lab Trong Labtainer VM
@@ -71,6 +73,19 @@ Kiểm tra kết quả:
 checkwork dc-ac-drift-extract
 ```
 
+### Lab 4: DC/AC Brute Force Extract
+
+```bash
+imodule https://github.com/Jaycelation/PTIT-Steganography-Project/raw/refs/heads/master/labtainer/dc-ac-bruteforce-extract.tar
+labtainer -r dc-ac-bruteforce-extract
+```
+
+Kiểm tra kết quả:
+
+```bash
+checkwork dc-ac-bruteforce-extract
+```
+
 Xem thêm hướng dẫn chạy trong VM tại [README_LABTAINER_VM.md](README_LABTAINER_VM.md).
 
 ## 3. Cấu Trúc Repo
@@ -111,9 +126,11 @@ Script `prepare_labtainer_public.py` sẽ tạo lại:
 labtainer/build/ac-midband-extract/
 labtainer/build/dc-ac-combined-extract/
 labtainer/build/dc-ac-drift-extract/
+labtainer/build/dc-ac-bruteforce-extract/
 labtainer/ac-midband-extract.tar
 labtainer/dc-ac-combined-extract.tar
 labtainer/dc-ac-drift-extract.tar
+labtainer/dc-ac-bruteforce-extract.tar
 ```
 
 Script `run_all_lab_checks.py` chạy các helper script trong từng package và kiểm tra các file cần cho `checkwork`.
@@ -131,6 +148,7 @@ Các tên lab hợp lệ:
 ac-midband-extract
 dc-ac-combined-extract
 dc-ac-drift-extract
+dc-ac-bruteforce-extract
 ```
 
 ## 5. Challenge Nền

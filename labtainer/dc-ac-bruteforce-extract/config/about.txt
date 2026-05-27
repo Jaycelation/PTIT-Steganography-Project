@@ -1,0 +1,1 @@
+Recover a DC/AC steganography payload by brute-forcing the missing seed and AC coefficient profile.

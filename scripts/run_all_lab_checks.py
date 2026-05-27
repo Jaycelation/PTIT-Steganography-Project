@@ -29,6 +29,15 @@ LAB_CHECKS = {
         ["tools/run_ac_extract.py"],
         ["tools/report_metrics.py"],
     ],
+    "dc-ac-bruteforce-extract": [
+        ["tools/check_video_metadata.py"],
+        ["tools/audit_public_config.py"],
+        ["tools/build_candidate_space.py"],
+        ["tools/probe_dc_sync.py"],
+        ["tools/run_bruteforce.py"],
+        ["tools/run_bruteforce_extract.py"],
+        ["tools/report_metrics.py"],
+    ],
 }
 
 
@@ -53,6 +62,19 @@ REQUIRED_FILES = {
     "ac-midband-extract": [
         "work/video_metadata.txt",
         "work/ac_config.txt",
+        "work/extract.log",
+        "work/answer_status.txt",
+        "work/answer.txt",
+        "work/answer.sha256",
+        "work/metrics.json",
+    ],
+    "dc-ac-bruteforce-extract": [
+        "work/video_metadata.txt",
+        "work/config_audit.txt",
+        "work/candidates.json",
+        "work/sync_probe.log",
+        "work/bruteforce.log",
+        "work/recovered_config.json",
         "work/extract.log",
         "work/answer_status.txt",
         "work/answer.txt",

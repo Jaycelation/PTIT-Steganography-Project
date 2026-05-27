@@ -1,0 +1,74 @@
+{
+  "challenge": "dc-ac-bruteforce",
+  "magic_length_bytes": 4,
+  "flag_length_bytes": 33,
+  "dc_step": 96.0,
+  "ac_step": 64.0,
+  "coefficient_candidates": [
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      2
+    ],
+    [
+      4,
+      1
+    ]
+  ],
+  "bruteforce": {
+    "seed_min": 1709,
+    "seed_max": 1829,
+    "coefficient_profiles": [
+      [
+        [
+          2,
+          3
+        ]
+      ],
+      [
+        [
+          3,
+          2
+        ]
+      ],
+      [
+        [
+          4,
+          1
+        ]
+      ],
+      [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    ],
+    "expected_magic": "STEG",
+    "expected_prefix": "PTIT{"
+  },
+  "source": "synthetic",
+  "max_width": null,
+  "mode": "frame-DCT simulation, not codec-level MPEG"
+}
